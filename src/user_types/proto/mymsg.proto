@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+import "hash.proto";
+
+message MyMsg {
+	Hash hash = 1;
+	uint32 my_field = 2;
+}
