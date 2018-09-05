@@ -36,7 +36,7 @@ impl MyMsg {
         ::std::default::Default::default()
     }
 
-    // .lib.protos.Hash hash = 1;
+    // .Hash hash = 1;
 
     pub fn clear_hash(&mut self) {
         self.hash.clear();
@@ -235,9 +235,9 @@ impl ::protobuf::reflect::ProtobufValue for MyMsg {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x0bmymsg.proto\x1a\nhash.proto\"H\n\x05MyMsg\x12$\n\x04hash\x18\x01\
-    \x20\x01(\x0b2\x10.lib.protos.HashR\x04hash\x12\x19\n\x08my_field\x18\
-    \x02\x20\x01(\rR\x07myFieldb\x06proto3\
+    \n\x0bmymsg.proto\x1a\nhash.proto\"=\n\x05MyMsg\x12\x19\n\x04hash\x18\
+    \x01\x20\x01(\x0b2\x05.HashR\x04hash\x12\x19\n\x08my_field\x18\x02\x20\
+    \x01(\rR\x07myFieldb\x06proto3\
 ";
 
 static mut file_descriptor_proto_lazy: ::protobuf::lazy::Lazy<::protobuf::descriptor::FileDescriptorProto> = ::protobuf::lazy::Lazy {

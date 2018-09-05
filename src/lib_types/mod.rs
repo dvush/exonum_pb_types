@@ -2,8 +2,9 @@ pub mod proto;
 
 use protobuf::Message;
 
+#[derive(Debug)]
 pub struct Hash {
-    data: [u32; 8]
+    pub data: [u32; 8],
 }
 
 pub fn to_pb(from: Hash) -> proto::hash::Hash {
@@ -12,7 +13,7 @@ pub fn to_pb(from: Hash) -> proto::hash::Hash {
     out
 }
 
-pub fn from_pb(from: proto::hash::Hash) -> Result<Hash,()> {
+pub fn from_pb(from: proto::hash::Hash) -> Result<Hash, ()> {
     if !from.is_initialized() {
         return Err(());
     }
@@ -20,6 +21,10 @@ pub fn from_pb(from: proto::hash::Hash) -> Result<Hash,()> {
     if data.len() != 8 {
         return Err(());
     }
-    let out = Hash { data: [data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7]] };
+    let out = Hash {
+        data: [
+            data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7],
+        ],
+    };
     Ok(out)
 }

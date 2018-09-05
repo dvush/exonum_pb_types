@@ -184,8 +184,8 @@ impl ::protobuf::reflect::ProtobufValue for Hash {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\nhash.proto\x12\nlib.protos\"\x1a\n\x04Hash\x12\x12\n\x04data\x18\x01\
-    \x20\x03(\rR\x04datab\x06proto3\
+    \n\nhash.proto\"\x1a\n\x04Hash\x12\x12\n\x04data\x18\x01\x20\x03(\rR\x04\
+    datab\x06proto3\
 ";
 
 static mut file_descriptor_proto_lazy: ::protobuf::lazy::Lazy<::protobuf::descriptor::FileDescriptorProto> = ::protobuf::lazy::Lazy {
