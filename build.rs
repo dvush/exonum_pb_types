@@ -28,10 +28,7 @@ fn main() {
     let proto_files = get_proto_files(&Path::new("src/lib_types/proto"));
     protoc_rust::run(protoc_rust::Args {
         out_dir: "src/lib_types/proto",
-        input: &proto_files
-            .iter()
-            .map(|s| s.to_str().expect("File name is not convertible to &str"))
-            .collect::<Vec<_>>(),
+        input: &["src/lib_types/proto/exonum/hash.proto", "src/lib_types/proto/exonum/use_hash.proto"],
         includes: &["src/lib_types/proto"],
         customize: Customize {
             ..Default::default()
