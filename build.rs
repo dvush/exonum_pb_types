@@ -8,12 +8,13 @@ use std::path::{Path, PathBuf};
 
 fn clean_path<P: AsRef<Path>>(path: &P) -> PathBuf {
     let p = path.as_ref();
+    let mut res = PathBuf::new();
     for c in p.components() {
         let p: &Path = c.as_ref();
-        println!("{}",p.to_str().unwrap());
+        res.push(p);
     }
-    println!("+++++++++");
-    p.to_path_buf()
+    println!("{}",res.to_str().unwrap());
+    res
 }
 
 /// Finds all .proto files in `path` and subfolders and returns a vector of their paths.
