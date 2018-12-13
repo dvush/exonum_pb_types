@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-import "hash.proto";
+import "exonum/hash.proto";
 
 message MyMsg {
 	Hash hash = 1;
