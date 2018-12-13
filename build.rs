@@ -8,9 +8,11 @@ use std::path::{Path, PathBuf};
 
 fn clean_path<P: AsRef<Path>>(path: &P) -> PathBuf {
     let p = path.as_ref();
-    for p in p.ancestors() {
+    for c in p.components() {
+        let p: &Path = c.as_ref();
         println!("{}",p.to_str().unwrap());
     }
+    println!("+++++++++");
     p.to_path_buf()
 }
 
@@ -39,6 +41,7 @@ fn main() {
             .map(|s| s.to_str().expect("File name is not convertible to &str"))
             .collect::<Vec<_>>();
     eprintln!("{:?}",p_vec);
+    panic!();
     protoc_rust::run(protoc_rust::Args {
         out_dir: "src/lib_types/proto",
         input: &p_vec,
