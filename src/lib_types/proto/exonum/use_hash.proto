@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+import "exonum/hash.proto";
+
+message HashUser {
+    Hash h = 1;
+}

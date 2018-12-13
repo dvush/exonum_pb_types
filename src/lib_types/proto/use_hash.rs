@@ -22,72 +22,56 @@ use protobuf::Message as Message_imported_for_functions;
 use protobuf::ProtobufEnum as ProtobufEnum_imported_for_functions;
 
 #[derive(PartialEq,Clone,Default)]
-pub struct MyMsg {
+pub struct HashUser {
     // message fields
-    pub hash: ::protobuf::SingularPtrField<super::hash::Hash>,
-    pub my_field: u32,
+    pub h: ::protobuf::SingularPtrField<super::hash::Hash>,
     // special fields
     pub unknown_fields: ::protobuf::UnknownFields,
     pub cached_size: ::protobuf::CachedSize,
 }
 
-impl MyMsg {
-    pub fn new() -> MyMsg {
+impl HashUser {
+    pub fn new() -> HashUser {
         ::std::default::Default::default()
     }
 
-    // .Hash hash = 1;
+    // .Hash h = 1;
 
-    pub fn clear_hash(&mut self) {
-        self.hash.clear();
+    pub fn clear_h(&mut self) {
+        self.h.clear();
     }
 
-    pub fn has_hash(&self) -> bool {
-        self.hash.is_some()
+    pub fn has_h(&self) -> bool {
+        self.h.is_some()
     }
 
     // Param is passed by value, moved
-    pub fn set_hash(&mut self, v: super::hash::Hash) {
-        self.hash = ::protobuf::SingularPtrField::some(v);
+    pub fn set_h(&mut self, v: super::hash::Hash) {
+        self.h = ::protobuf::SingularPtrField::some(v);
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_hash(&mut self) -> &mut super::hash::Hash {
-        if self.hash.is_none() {
-            self.hash.set_default();
+    pub fn mut_h(&mut self) -> &mut super::hash::Hash {
+        if self.h.is_none() {
+            self.h.set_default();
         }
-        self.hash.as_mut().unwrap()
+        self.h.as_mut().unwrap()
     }
 
     // Take field
-    pub fn take_hash(&mut self) -> super::hash::Hash {
-        self.hash.take().unwrap_or_else(|| super::hash::Hash::new())
+    pub fn take_h(&mut self) -> super::hash::Hash {
+        self.h.take().unwrap_or_else(|| super::hash::Hash::new())
     }
 
-    pub fn get_hash(&self) -> &super::hash::Hash {
-        self.hash.as_ref().unwrap_or_else(|| super::hash::Hash::default_instance())
-    }
-
-    // uint32 my_field = 2;
-
-    pub fn clear_my_field(&mut self) {
-        self.my_field = 0;
-    }
-
-    // Param is passed by value, moved
-    pub fn set_my_field(&mut self, v: u32) {
-        self.my_field = v;
-    }
-
-    pub fn get_my_field(&self) -> u32 {
-        self.my_field
+    pub fn get_h(&self) -> &super::hash::Hash {
+        self.h.as_ref().unwrap_or_else(|| super::hash::Hash::default_instance())
     }
 }
 
-impl ::protobuf::Message for MyMsg {
+impl ::protobuf::Message for HashUser {
     fn is_initialized(&self) -> bool {
-        for v in &self.hash {
+        for v in &self.h {
             if !v.is_initialized() {
                 return false;
             }
@@ -100,14 +84,7 @@ impl ::protobuf::Message for MyMsg {
             let (field_number, wire_type) = is.read_tag_unpack()?;
             match field_number {
                 1 => {
-                    ::protobuf::rt::read_singular_message_into(wire_type, is, &mut self.hash)?;
-                },
-                2 => {
-                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
-                    }
-                    let tmp = is.read_uint32()?;
-                    self.my_field = tmp;
+                    ::protobuf::rt::read_singular_message_into(wire_type, is, &mut self.h)?;
                 },
                 _ => {
                     ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
@@ -121,12 +98,9 @@ impl ::protobuf::Message for MyMsg {
     #[allow(unused_variables)]
     fn compute_size(&self) -> u32 {
         let mut my_size = 0;
-        if let Some(ref v) = self.hash.as_ref() {
+        if let Some(ref v) = self.h.as_ref() {
             let len = v.compute_size();
             my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
-        }
-        if self.my_field != 0 {
-            my_size += ::protobuf::rt::value_size(2, self.my_field, ::protobuf::wire_format::WireTypeVarint);
         }
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
         self.cached_size.set(my_size);
@@ -134,13 +108,10 @@ impl ::protobuf::Message for MyMsg {
     }
 
     fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream) -> ::protobuf::ProtobufResult<()> {
-        if let Some(ref v) = self.hash.as_ref() {
+        if let Some(ref v) = self.h.as_ref() {
             os.write_tag(1, ::protobuf::wire_format::WireTypeLengthDelimited)?;
             os.write_raw_varint32(v.get_cached_size())?;
             v.write_to_with_cached_sizes(os)?;
-        }
-        if self.my_field != 0 {
-            os.write_uint32(2, self.my_field)?;
         }
         os.write_unknown_fields(self.get_unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -172,8 +143,8 @@ impl ::protobuf::Message for MyMsg {
         Self::descriptor_static()
     }
 
-    fn new() -> MyMsg {
-        MyMsg::new()
+    fn new() -> HashUser {
+        HashUser::new()
     }
 
     fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
@@ -185,17 +156,12 @@ impl ::protobuf::Message for MyMsg {
             descriptor.get(|| {
                 let mut fields = ::std::vec::Vec::new();
                 fields.push(::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<super::hash::Hash>>(
-                    "hash",
-                    |m: &MyMsg| { &m.hash },
-                    |m: &mut MyMsg| { &mut m.hash },
+                    "h",
+                    |m: &HashUser| { &m.h },
+                    |m: &mut HashUser| { &mut m.h },
                 ));
-                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeUint32>(
-                    "my_field",
-                    |m: &MyMsg| { &m.my_field },
-                    |m: &mut MyMsg| { &mut m.my_field },
-                ));
-                ::protobuf::reflect::MessageDescriptor::new::<MyMsg>(
-                    "MyMsg",
+                ::protobuf::reflect::MessageDescriptor::new::<HashUser>(
+                    "HashUser",
                     fields,
                     file_descriptor_proto()
                 )
@@ -203,41 +169,39 @@ impl ::protobuf::Message for MyMsg {
         }
     }
 
-    fn default_instance() -> &'static MyMsg {
-        static mut instance: ::protobuf::lazy::Lazy<MyMsg> = ::protobuf::lazy::Lazy {
+    fn default_instance() -> &'static HashUser {
+        static mut instance: ::protobuf::lazy::Lazy<HashUser> = ::protobuf::lazy::Lazy {
             lock: ::protobuf::lazy::ONCE_INIT,
-            ptr: 0 as *const MyMsg,
+            ptr: 0 as *const HashUser,
         };
         unsafe {
-            instance.get(MyMsg::new)
+            instance.get(HashUser::new)
         }
     }
 }
 
-impl ::protobuf::Clear for MyMsg {
+impl ::protobuf::Clear for HashUser {
     fn clear(&mut self) {
-        self.clear_hash();
-        self.clear_my_field();
+        self.clear_h();
         self.unknown_fields.clear();
     }
 }
 
-impl ::std::fmt::Debug for MyMsg {
+impl ::std::fmt::Debug for HashUser {
     fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
 
-impl ::protobuf::reflect::ProtobufValue for MyMsg {
+impl ::protobuf::reflect::ProtobufValue for HashUser {
     fn as_ref(&self) -> ::protobuf::reflect::ProtobufValueRef {
         ::protobuf::reflect::ProtobufValueRef::Message(self)
     }
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x0bmymsg.proto\x1a\x11exonum/hash.proto\"=\n\x05MyMsg\x12\x19\n\x04ha\
-    sh\x18\x01\x20\x01(\x0b2\x05.HashR\x04hash\x12\x19\n\x08my_field\x18\x02\
-    \x20\x01(\rR\x07myFieldb\x06proto3\
+    \n\x15exonum/use_hash.proto\x1a\x11exonum/hash.proto\"\x1f\n\x08HashUser\
+    \x12\x13\n\x01h\x18\x01\x20\x01(\x0b2\x05.HashR\x01hb\x06proto3\
 ";
 
 static mut file_descriptor_proto_lazy: ::protobuf::lazy::Lazy<::protobuf::descriptor::FileDescriptorProto> = ::protobuf::lazy::Lazy {
