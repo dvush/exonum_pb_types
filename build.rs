@@ -26,9 +26,14 @@ fn main() {
     //Here we generate library types from .proto
 
     let proto_files = get_proto_files(&Path::new("src/lib_types/proto"));
+    let p_vec = proto_files
+            .iter()
+            .map(|s| s.to_str().expect("File name is not convertible to &str"))
+            .collect::<Vec<_>>();
+    eprintln!("{:?}",p_vec);
     protoc_rust::run(protoc_rust::Args {
         out_dir: "src/lib_types/proto",
-        input: &["src/lib_types/proto/exonum/hash.proto", "src/lib_types/proto/exonum/use_hash.proto"],
+        input: &p_vec,
         includes: &["src/lib_types/proto"],
         customize: Customize {
             ..Default::default()
